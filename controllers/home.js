@@ -21,9 +21,11 @@ module.exports = function (app) {
             Usuario.findOne(query).select('nome senha')
                 .exec(function (erro, usuario) {
                     if (erro) {
+                    	response.send(false)
                         response.redirect('/');
                     }
                     else {
+                    	response.send(true)
                         request.session.usuario = usuario;
                         response.redirect('/menu');
                     }
