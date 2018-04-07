@@ -25,7 +25,7 @@ module.exports = function (app) {
                     }
                     else {
                    		if(!usuario) {
-                   			response.send(false)
+                   			response.status(401).send({});
 	                 	}else{
                         	response.redirect('/menu');
 	                 	}
