@@ -7,9 +7,15 @@ module.exports = function (app) {
             response.render('home/index');
         },
         login: function (request, response) {
-            var nome = request.body.usuario.nome;
-            var senha = request.body.usuario.senha;
-            console.log("!!!!!!!!!!!!!!!!")
+            var nome
+            var senha
+            if(!request.body.usuario){
+                nome = request.body.nome;
+                senha = request.body.senha;
+            }else{
+                nome = request.body.usuario.nome;
+                senha = request.body.usuario.senha;
+            }
 
             var query = { 'nome': nome, 'senha': senha };
             Usuario.findOne(query).select('nome senha')
