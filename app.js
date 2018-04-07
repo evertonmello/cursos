@@ -29,6 +29,5 @@ load('models')
     .then('controllers')
     .then('routes')
     .into(app);
-app.listen(3000, function () {
-    console.log("Aplicação no ar.");
-}); 
+
+module.exports = app;
