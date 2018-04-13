@@ -21,6 +21,7 @@ module.exports = function (app) {
             Usuario.findOne(query).select('nome senha')
                 .exec(function (erro, usuario) {
                     if (erro) {
+                        console.log("erro!!!!")
                         response.redirect('/');
                     }
                     else {
@@ -29,8 +30,6 @@ module.exports = function (app) {
 	                 	}else{
                         	response.redirect('/menu');
 	                 	}
-
-
                     }
                 });
         },
