@@ -3,9 +3,6 @@ module.exports = function (app) {
 
     var carrosController = {
         newCarro: function (request, response) {
-            var usuario = request.session.usuario,
-                params = { usuario: usuario };
-
             var carro = new Carro(request.body.carro);
             carro.save(function (err) {
                 if (err) {
@@ -15,6 +12,7 @@ module.exports = function (app) {
             })
         },
         listaCarros: function (request, response) {
+            console.log("CARROOOO !!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             Carro.find(function (err, carros) {
                 if (err) return console.error(err);
                 response.send(carros);
