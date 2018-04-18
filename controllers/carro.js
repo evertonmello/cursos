@@ -3,8 +3,8 @@ module.exports = function (app) {
 
     var carrosController = {
         newCarro: function (request, response) {
-            console.log(request)
-            var carro = new Carro(request.body.carro);
+            var newC = request.body.carro? request.body: request.body.carro;
+            var carro = new Carro(newC);
             carro.save(function (err) {
                 if (err) {
                     response.send(err);
