@@ -19,6 +19,7 @@ module.exports = function (app) {
         },
         findCar(req, res){
             var modelo = req.params.modelo;
+            console.log(modelo)
             Carro.findOne({modelo:modelo}, function(err, carro){
                 if(err || !carro){
                     res.statusCode = 404;
@@ -27,7 +28,7 @@ module.exports = function (app) {
                 }else{
                     res.send(carro);
                 }
-
+                console.log(carro)
             })  
         },
         removeCar: function (req, resp) {
