@@ -17,6 +17,19 @@ module.exports = function (app) {
                 response.send(carros);
             })
         },
+        findCar(req, res){
+            var modelo = req.params.modelo;
+            Carro.findOne({modelo:modelo}, function(err, carro){
+                if(err || !carro){
+                    res.statusCode = 404;
+                    res.send(err)
+                    return console.error(err);
+                }else{
+                    res.send(carro);
+                }
+
+            })  
+        },
         removeCar: function (req, resp) {
             var reqId = req.params.id;
 
