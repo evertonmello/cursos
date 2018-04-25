@@ -6,6 +6,31 @@ module.exports = function (app) {
         index: function (request, response) {
             response.render('home/index');
         },
+        addUser(req, res){
+            var nome
+            var senha
+            if(!req.body.usuario){
+                nome = req.body.nome;
+                senha = req.body.senha;
+            }else{
+                nome = req.body.usuario.nome;
+                senha = req.body.usuario.senha;
+            }
+
+            var usuario = new Usuario({'nome':nome, 'senha':senha}); 
+
+            usuario.save(function (err) {
+                if (err) {
+                    res.statusCode = 404;
+                    res.send(err)
+                    return console.error(err);
+                    return handleError(err);                        
+                }else{ 
+                    res.send(200);
+                                            
+                }                    
+              })
+        },
         login: function (request, response) {
             var nome
             var senha
